@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,25 +26,25 @@ public class GameManager : MonoBehaviour
 
 
     [Header("Current Stats To Display")]
-    public Text currentHealth;
-    public Text currentRecovery;
-    public Text currentMoveSpeed;
-    public Text currentMight;
-    public Text currentProjectileSpeed;
-    public Text currentCollectRange;
+    public TMP_Text currentHealth;
+    public TMP_Text currentRecovery;
+    public TMP_Text currentMoveSpeed;
+    public TMP_Text currentMight;
+    public TMP_Text currentProjectileSpeed;
+    public TMP_Text currentCollectRange;
 
     [Header("GameOverDisplay")]
     public Image chosenCharacterIcon;
-    public Text chosenCharacterName;
-    public Text levelReached;
-    public Text timeSurvived;
+    public TMP_Text chosenCharacterName;
+    public TMP_Text levelReached;
+    public TMP_Text timeSurvived;
     public List<Image> chosenWeaponsUI = new List<Image>();
     public List<Image> chosenPassiveItemsUI = new List<Image>();
 
     [Header("Stopwatch")]
     public float timeLimit;
     float stopwatchTime;
-    public Text stopwatchDisplay;
+    public TMP_Text stopwatchDisplay;
 
     //Check if game ended
     public bool isGameOver = false;

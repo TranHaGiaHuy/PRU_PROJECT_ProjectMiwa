@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
                 currentHealth = value;
                 if (GameManager.instance!=null)
                 {
-                    GameManager.instance.currentHealth.text = currentHealth.ToString() + "/" + characterData.MaxHealth;
+                    GameManager.instance.currentHealth.text = (int)currentHealth + "/" + characterData.MaxHealth;
 
                 }
             }
@@ -147,7 +147,7 @@ public class PlayerStats : MonoBehaviour
     [Header("UI")]
     public Image healthBar;
     public Image expBar;
-    public Text levelText;
+    public TMP_Text levelText;
 
 
     [Header("Weapon Demo Add")]
@@ -178,7 +178,7 @@ public class PlayerStats : MonoBehaviour
 
         inventory.SpawnWeapon(characterData.StartingWeapon);
         //Set up UI for Pause Screen
-        GameManager.instance.currentHealth.text = currentHealth.ToString() + "/" + characterData.MaxHealth;
+        GameManager.instance.currentHealth.text = currentHealth + "/" + characterData.MaxHealth;
         GameManager.instance.currentRecovery.text = currentRecovery.ToString();
         GameManager.instance.currentMoveSpeed.text = currentMoveSpeed.ToString();
         GameManager.instance.currentMight.text = currentMight.ToString();
