@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6805012151159918670}
   - component: {fileID: 8393342934033317626}
   - component: {fileID: 1849283936604258300}
+  - component: {fileID: 8308164383991598283}
   m_Layer: 0
   m_Name: Rock4
   m_TagString: Prop
@@ -147,3 +148,16 @@ MonoBehaviour:
   - name: Health Potion
     itemPrefab: {fileID: 6690506008235337922, guid: f303b3b4b070ad44883f85a8ecfb8fa2, type: 3}
     dropRate: 25
+--- !u!114 &8308164383991598283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224515791975042267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d26fbc91ed0bc444b987a47c2bfc2cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10

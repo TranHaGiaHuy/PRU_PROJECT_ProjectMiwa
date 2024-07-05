@@ -424,6 +424,35 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Terrain_Sprite_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 224
+        width: 34
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.615906, y: -8.495941}
+        - {x: -0.86343384, y: 2.8767242}
+        - {x: -16.310425, y: 7.519516}
+        - {x: -16.320068, y: 13}
+        - {x: 17, y: 13}
+        - {x: 16.926453, y: 10.213303}
+        - {x: 4.511505, y: 3.0740814}
+        - {x: 12.37793, y: -8.303345}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 042210f529edd1945aaf26d23707ee4d
+      internalID: -292879056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -450,6 +479,7 @@ TextureImporter:
       Rock4: -603675906
       Rock5: -1168212384
       Rock6: -776325260
+      Terrain_Sprite_Sheet_0: -292879056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
