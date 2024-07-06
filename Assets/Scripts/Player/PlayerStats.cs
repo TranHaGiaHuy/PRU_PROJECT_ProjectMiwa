@@ -249,11 +249,17 @@ public class PlayerStats : MonoBehaviour
             isInvincible = true;
 
             CurrentHealth -= dmg;
+            if (dmg > 0 && currentHealth > 0)
+            {
+                GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform);
+            }
             if (CurrentHealth <= 0)
             {
                 Kill();
             }
+           
             UpdateHealthBar();
+
         }
 
     }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,17 +43,25 @@ public class GameManager : MonoBehaviour
     public List<Image> chosenWeaponsUI = new List<Image>();
     public List<Image> chosenPassiveItemsUI = new List<Image>();
 
-    [Header("Stopwatch")]
-    public float timeLimit;
-    float stopwatchTime;
-    public TMP_Text stopwatchDisplay;
-
+   
     //Check if game ended
     public bool isGameOver = false;
     public bool isPause = false;
     public bool isChoosingUpgrade = false;
 
     public GameObject playerObject;
+
+    [Header("Stopwatch")]
+    public float timeLimit;
+    float stopwatchTime;
+    public TMP_Text stopwatchDisplay;
+
+    [Header("Damage Text Display")]
+    public Canvas damageTextCanvas; // to draw into screen
+    public float textFontSize = 20;
+    public TMP_FontAsset textFont;
+    public Camera referenceCamera;
+
     void Awake()
     {
         if (instance == null)
@@ -234,5 +244,52 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         levelUpScreen.SetActive(false);
         ChangeState(GameState.GamePlay);
+    }
+
+    public static void GenerateFloatingText(string text, Transform target, float duration =0.4f, float speed =0.5f)
+    {
+        if (!instance.damageTextCanvas) 
+        {
+            return;   
+        }
+        if (!instance.referenceCamera)
+        {
+            instance.referenceCamera = Camera.main;
+        }
+        instance.StartCoroutine(instance.GenerateFloatingTextCoroutine(text,target,duration,speed));
+    }
+
+   IEnumerator GenerateFloatingTextCoroutine(string text, Transform target, float duration, float speed)
+    {
+        GameObject textObj = new GameObject("Damage Floating Text");
+        RectTransform rect = textObj.AddComponent<RectTransform>();
+        TextMeshProUGUI tmPro = textObj.AddComponent<TextMeshProUGUI>();
+
+        tmPro.text = text;
+        tmPro.horizontalAlignment = HorizontalAlignmentOptions.Center;
+        tmPro.verticalAlignment = VerticalAlignmentOptions.Middle;
+        tmPro.fontSize = textFontSize;
+        if (textFont) tmPro.font = textFont;
+        rect.position = referenceCamera.WorldToScreenPoint(target.position);
+        if (target.gameObject.CompareTag("Player"))
+        {
+            tmPro.color = Color.red;
+        }
+        Destroy(textObj, duration);
+
+        textObj.transform.SetParent(instance.damageTextCanvas.transform);
+
+        WaitForEndOfFrame w = new WaitForEndOfFrame();
+        float timer = 0;
+        float yOffset = 0;
+        while (timer<duration) {
+            yield return w;
+            timer += Time.deltaTime;
+
+           // tmPro.color = new Color(tmPro.color.r, tmPro.color.g, tmPro.color.b, 1 - timer / duration);
+            yOffset += speed * Time.deltaTime;
+            rect.position = referenceCamera.WorldToScreenPoint(target.position+new Vector3(0,yOffset));
+        }
+        
     }
 }

@@ -21,7 +21,7 @@ public class EnemyStats : MonoBehaviour
     [Header("Damage Feedback")]
     public Color damageColor = new Color(1, 0, 0, 1);
     public float damageFlashDuration = 0.2f;
-    public float deathFadeTime = 0.6f;
+    public float deathFadeTime = 0.5f;
     Color originalColor;
     SpriteRenderer sr;
     EnemyMovement movement;
@@ -47,11 +47,15 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float dmg, Vector2 sourcePosition, float knockbackForce = 5f, float knockbackDuration = 0.2f)
+    public void TakeDamage(float dmg, Vector2 sourcePosition, float knockbackForce = 3f, float knockbackDuration = 0.2f)
     {
 
         currentHealth -= dmg;
         StartCoroutine(DamageFlash());
+        if (dmg>0)
+        {
+            GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform);
+        }
         if (knockbackForce>0)
         {
             Vector2 dir = (Vector2)transform.position - sourcePosition;
@@ -72,15 +76,34 @@ public class EnemyStats : MonoBehaviour
     }
     public void Kill()
     {
-        Destroy(gameObject);
-    }
-     void OnCollisionStay2D(Collision2D collision)
-    {
+      StartCoroutine(KillFade());
 
-        if (collision.gameObject.CompareTag("Player"))
+    }
+
+
+    IEnumerator KillFade()
+    {
+        WaitForEndOfFrame w = new WaitForEndOfFrame();
+        float timer = 0;
+        while (timer < deathFadeTime)
         {
-            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-            player.TakeDamage(currentDamage);
+            yield return w;
+            timer += Time.deltaTime;
+
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a * (1 - timer / deathFadeTime));
+        }
+        Destroy(gameObject);
+
+    }
+
+
+ void OnTriggerStay2D(Collider2D col)
+    {
+        //Reference the script from the collided collider and deal damage using TakeDamage()
+        if (col.gameObject.CompareTag("Player"))
+        {
+            PlayerStats player = col.gameObject.GetComponent<PlayerStats>();
+            player.TakeDamage(currentDamage); // Make sure to use currentDamage instead of weaponData.Damage in case any damage multipliers in the future
         }
     }
     void OnDestroy()
