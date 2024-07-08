@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -142,6 +143,7 @@ public class PlayerStats : MonoBehaviour
     public float invincibilityDuration;
     float invincibleTimer;
     bool isInvincible;
+    float recoverTimer=0;
 
 
     [Header("UI")]
@@ -201,9 +203,15 @@ public class PlayerStats : MonoBehaviour
         { 
         isInvincible = false;
         }
-
+        recoverTimer += Time.deltaTime;
+        if (recoverTimer > 1f)
+        {
+            RestoreHealth(Mathf.FloorToInt(CurrentRecovery));
+            recoverTimer = 0;
+        }
         //Recover for each 1s
-        Recover();
+       // Recover();
+      
     }
 
     public void IncreaseExp(int amount)
@@ -251,7 +259,7 @@ public class PlayerStats : MonoBehaviour
             CurrentHealth -= dmg;
             if (dmg > 0 && currentHealth > 0)
             {
-                GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform);
+                GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform,Color.red);
             }
             if (CurrentHealth <= 0)
             {
@@ -259,7 +267,7 @@ public class PlayerStats : MonoBehaviour
             }
            
             UpdateHealthBar();
-
+           
         }
 
     }
@@ -282,11 +290,17 @@ public class PlayerStats : MonoBehaviour
         if (CurrentHealth < characterData.MaxHealth)
         {
             CurrentHealth += healthToRestore;
-            if (CurrentHealth > characterData.MaxHealth) {
+            if (CurrentHealth >= characterData.MaxHealth)
+            {
                 CurrentHealth = characterData.MaxHealth;
+            }
+            else
+            {
+                GameManager.GenerateFloatingText(Mathf.FloorToInt(healthToRestore).ToString(), transform,Color.green);
             }
 
         }
+       
         UpdateHealthBar();
 
 
@@ -301,6 +315,7 @@ public class PlayerStats : MonoBehaviour
                 CurrentHealth = characterData.MaxHealth;
             }
         }
+       
         UpdateHealthBar();
 
     }

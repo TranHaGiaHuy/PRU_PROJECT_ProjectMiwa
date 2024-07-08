@@ -54,7 +54,7 @@ public class EnemyStats : MonoBehaviour
         StartCoroutine(DamageFlash());
         if (dmg>0)
         {
-            GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform);
+            GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform,Color.white);
         }
         if (knockbackForce>0)
         {

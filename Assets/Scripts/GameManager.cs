@@ -246,7 +246,7 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.GamePlay);
     }
 
-    public static void GenerateFloatingText(string text, Transform target, float duration =0.4f, float speed =0.5f)
+    public static void GenerateFloatingText(string text, Transform target,Color color, float duration =0.4f, float speed =0.5f)
     {
         if (!instance.damageTextCanvas) 
         {
@@ -256,10 +256,10 @@ public class GameManager : MonoBehaviour
         {
             instance.referenceCamera = Camera.main;
         }
-        instance.StartCoroutine(instance.GenerateFloatingTextCoroutine(text,target,duration,speed));
+        instance.StartCoroutine(instance.GenerateFloatingTextCoroutine(text,target, color,duration, speed));
     }
 
-   IEnumerator GenerateFloatingTextCoroutine(string text, Transform target, float duration, float speed)
+   IEnumerator GenerateFloatingTextCoroutine(string text, Transform target, Color color, float duration, float speed)
     {
         GameObject textObj = new GameObject("Damage Floating Text");
         RectTransform rect = textObj.AddComponent<RectTransform>();
@@ -271,10 +271,7 @@ public class GameManager : MonoBehaviour
         tmPro.fontSize = textFontSize;
         if (textFont) tmPro.font = textFont;
         rect.position = referenceCamera.WorldToScreenPoint(target.position);
-        if (target.gameObject.CompareTag("Player"))
-        {
-            tmPro.color = Color.red;
-        }
+        tmPro.color = color;
         Destroy(textObj, duration);
 
         textObj.transform.SetParent(instance.damageTextCanvas.transform);
