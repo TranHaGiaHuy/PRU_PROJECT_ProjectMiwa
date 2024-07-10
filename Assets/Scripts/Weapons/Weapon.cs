@@ -131,7 +131,7 @@ public abstract class Weapon : Item
     }
     public virtual float GetDamage()
     {
-        return currentStats.GetDamage() * player.CurrentMight;
+        return currentStats.GetDamage() * owner.CurrentMight;
     }                       
     
 }

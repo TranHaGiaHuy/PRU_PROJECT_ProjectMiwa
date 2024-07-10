@@ -44,12 +44,12 @@ public class ProjectileWeapon : Weapon
 
 		Projectile prefab = Instantiate(
 			currentStats.projectilePrefab,
-			player.transform.position + (Vector3)GetSpawnOffset(spawnAngle),
+			owner.transform.position + (Vector3)GetSpawnOffset(spawnAngle),
 			Quaternion.Euler(0,0,spawnAngle)
 			);
 
 		prefab.weapon = this;
-		prefab.player = player;
+		prefab.player = owner;
 
         if (currentCooldown <=0)
         {

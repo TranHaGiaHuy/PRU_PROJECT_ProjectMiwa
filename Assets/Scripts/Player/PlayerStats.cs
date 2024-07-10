@@ -204,7 +204,7 @@ public class PlayerStats : MonoBehaviour
         isInvincible = false;
         }
         recoverTimer += Time.deltaTime;
-        if (recoverTimer > 1f)
+        if (recoverTimer > 1f && CurrentRecovery>0)
         {
             RestoreHealth(Mathf.FloorToInt(CurrentRecovery));
             recoverTimer = 0;
