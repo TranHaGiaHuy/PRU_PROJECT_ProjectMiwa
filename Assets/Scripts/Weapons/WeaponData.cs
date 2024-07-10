@@ -3,13 +3,10 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "Weapon Data", menuName ="ScriptableObject/Weapon Data")]
-public class WeaponData : ScriptableObject
+public class WeaponData : ItemData
 {
-    public Sprite icon;
-    public int maxLevel;
-
-    [HideInInspector]
-    public string behaviour;
+   
+    [HideInInspector] public string behaviour;
     public Weapon.Stats baseStats;
     public Weapon.Stats[] linearGrowth;
     public Weapon.Stats[] randomGrowth;
@@ -27,5 +24,7 @@ public class WeaponData : ScriptableObject
         Debug.LogWarning("Weapon doesn;t have its level stats configured for level");
         return new Weapon.Stats();
     }
+
+
     
 }
