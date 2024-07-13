@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Weapon Data", menuName ="ScriptableObject/Weapon Data")]
+[CreateAssetMenu(fileName = "Weapon Data", menuName = "Data/Weapon Data")]
 public class WeaponData : ItemData
 {
    
@@ -13,15 +13,15 @@ public class WeaponData : ItemData
 
     public Weapon.Stats GetLevelData(int level)
     {
-        if (level -2 < linearGrowth.Length)
+        if (level - 2 < linearGrowth.Length)
         {
-            return linearGrowth[level - 3];
+            return linearGrowth[level - 2];
         }
         if (randomGrowth.Length>0)
         {
             return randomGrowth[UnityEngine.Random.Range(0, randomGrowth.Length)];
         }
-        Debug.LogWarning("Weapon doesn;t have its level stats configured for level");
+        Debug.LogWarning("Weapon doesn't have its level stats configured for level");
         return new Weapon.Stats();
     }
 

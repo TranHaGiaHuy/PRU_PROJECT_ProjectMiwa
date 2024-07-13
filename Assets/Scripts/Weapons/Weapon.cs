@@ -15,8 +15,8 @@ public abstract class Weapon : Item
         [Header("Visuals")]
         public ParticleSystem hitEffect;
 		public Projectile projectilePrefab;
+        public Aura auraPrefab;
 		public Rect spawnVariance;
-       // public Aura auraPrefab;;
 
 
 		[Header("Values")]
@@ -37,8 +37,10 @@ public abstract class Weapon : Item
             Stats result = new Stats();
             result.name = s2.name ?? s1.name;
             result.description = s2.description ?? s1.description;
+            result.projectilePrefab = s2.projectilePrefab ?? s1.projectilePrefab;
+            result.auraPrefab = s2.auraPrefab ?? s1.auraPrefab;
             result.hitEffect = s2.hitEffect == null ? s1.hitEffect : s2.hitEffect;
-            result.spawnVariance = s2.spawnVariance;
+            result.spawnVariance = s1.spawnVariance ;
             result.lifeSpan = s1.lifeSpan + s2.lifeSpan;
             result.damage = s1.damage + s2.damage;
             result.damageVariance = s1.damageVariance + s2.damageVariance;
@@ -71,7 +73,7 @@ public abstract class Weapon : Item
 		shootingDirection = FindObjectOfType<gun>();
 		this.data = data;
         currentStats = data.baseStats;
-        movement = GetComponent<PlayerMovement>();
+        movement = FindObjectOfType<PlayerMovement>();
 
         currentCooldown = currentStats.cooldown;
     }
@@ -113,8 +115,8 @@ public abstract class Weapon : Item
             return false;
         }
 
-        currentStats += data.GetLevelData(++currentLevel);
-        return true;
+		currentStats += data.GetLevelData(++currentLevel);
+		return true;
     }
     public virtual bool CanAttack() 
     {

@@ -7,12 +7,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : WeaponEffect
 {
-    public enum DamageSource { projectile, ownmer}
+    public enum DamageSource { projectile, owner}
     public DamageSource damageSource = DamageSource.projectile;
     public bool hasAutoAim = false;
     public Vector3 rotationSpeed = new Vector3 (0, 0, 0);
     Vector3 mousePos = new Vector3(0, 0, 0);
-	public Rigidbody2D rb;
+	Rigidbody2D rb;
     protected int piercing;
     public gun shootingDirection;
 
@@ -21,11 +21,13 @@ public class Projectile : WeaponEffect
 		shootingDirection = FindObjectOfType<gun>();
 		mousePos= shootingDirection.transform.position - transform.position;
 		rb = GetComponent<Rigidbody2D>();
-		Weapon.Stats stats = weapon.GetStats();
+
+        Debug.Log(weapon.data.name);
+        Weapon.Stats stats = weapon.GetStats();
         if (rb.bodyType == RigidbodyType2D.Dynamic)
         {
             rb.angularVelocity = rotationSpeed.z;
-            rb.velocity = mousePos * stats.speed;
+            rb.velocity = transform.right * stats.speed;
         }
 
         float area = stats.area ==0? 1:stats.area;
@@ -79,7 +81,8 @@ public class Projectile : WeaponEffect
 
         if (es)
         {
-            Vector3 source  =  damageSource == DamageSource.ownmer && player ? player.transform.position : transform.position;
+            Debug.LogWarning("Gay sat thuong");
+            Vector3 source  =  damageSource == DamageSource.owner && owner ? owner.transform.position : transform.position;
             es.TakeDamage(GetDamage(),source);
             Weapon.Stats stats = weapon.GetStats();
             piercing--;
@@ -102,3 +105,4 @@ public class Projectile : WeaponEffect
     }
 
 }
+ 

@@ -42,4 +42,15 @@ public class PlayerAnimator : MonoBehaviour
         }
         
     }
+    // Allows us to update the default sprite and animations.
+    public void SetSprites(Sprite sprite, RuntimeAnimatorController controller = null)
+    {
+        sr = GetComponent<SpriteRenderer>();
+        if (controller)
+        {
+            am = GetComponent<Animator>();
+            am.runtimeAnimatorController = controller;
+        }
+        sr.sprite = sprite;
+    }
 }

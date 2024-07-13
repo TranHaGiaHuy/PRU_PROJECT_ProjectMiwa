@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3a376183af42041bec7ff2b761a067, type: 3}
+  m_Name: Assasin
+  m_EditorClassIdentifier: 
+  icon: {fileID: -931678532, guid: 24286a32b070d7e4496b32d99daf515c, type: 3}
+  controller: {fileID: 22100000, guid: e439ac8311acc94449336231d0ae6d50, type: 2}
+  name: Assasin
+  startingWeapon: {fileID: 11400000, guid: 53cc44ef10534ed4f9c41783b961f1cf, type: 2}
+  stats:
+    maxHealth: 1000
+    recovery: 0
+    moveSpeed: 5
+    might: 1
+    projectileSpeed: 1
+    collectRange: 10

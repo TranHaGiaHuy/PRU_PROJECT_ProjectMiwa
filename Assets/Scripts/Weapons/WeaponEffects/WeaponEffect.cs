@@ -10,7 +10,7 @@ namespace Assets.Scripts.Weapons
 	public abstract class WeaponEffect: MonoBehaviour
 	{
 		[HideInInspector]
-		public PlayerStats player;
+		public PlayerStats owner;
 		[HideInInspector]
 		public Weapon weapon;
 

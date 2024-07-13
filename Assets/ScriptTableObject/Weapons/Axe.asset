@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb2a32213f13394f8549cb27c8ce5f4, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1756547587, guid: e2731fbe6ccba5948aa7ead0cd976028, type: 3}
+  maxLevel: 2
+  evolutionData: []
+  behaviour: AxeWeapon
+  baseStats:
+    name: 'Axe '
+    description: Throwing axe around dealing damage
+    hitEffect: {fileID: 0}
+    projectilePrefab: {fileID: 8103297361467934196, guid: b18a6e90a6d37c34b9aeb55c1cb8ee73, type: 3}
+    auraPrefab: {fileID: 0}
+    spawnVariance:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    lifeSpan: 2
+    damage: 60
+    damageVariance: 10
+    area: 1
+    speed: 5
+    cooldown: 2
+    projectTileInterval: 0.2
+    knockback: 1
+    number: 1
+    pierce: 2
+    maxInstances: 70
+  linearGrowth:
+  - name: Axe Lv2
+    description: Fires 1 more axe
+    hitEffect: {fileID: 0}
+    projectilePrefab: {fileID: 0}
+    auraPrefab: {fileID: 0}
+    spawnVariance:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    lifeSpan: 0
+    damage: 0
+    damageVariance: 0
+    area: 0
+    speed: 0
+    cooldown: 0
+    projectTileInterval: 0
+    knockback: 0
+    number: 1
+    pierce: 0
+    maxInstances: 0
+  randomGrowth: []

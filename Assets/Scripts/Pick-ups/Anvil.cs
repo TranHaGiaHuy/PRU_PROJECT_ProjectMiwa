@@ -4,30 +4,46 @@ using UnityEngine;
 
 public class Anvil : MonoBehaviour
 {
-    InventoryManager inventory;
-    // Start is called before the first frame update
-    void Start()
-    {
-        inventory = FindObjectOfType<InventoryManager>();
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            UsingAnvil();
-            Destroy(gameObject);
-        }
-    }
+		PlayerInventory pi = collision.GetComponent<PlayerInventory>();
+		if (pi)
+		{
+            Debug.LogWarning("DA NHAN CAI DE");
+            bool randomBool = Random.Range(0, 2) == 0;
+			UsingAnvil(pi, randomBool);
+			Destroy(gameObject);
+		}
+	}
 
     // Update is called once per frame
-    public void UsingAnvil()
+    public void UsingAnvil(PlayerInventory inventory, bool isHigherTier)
     {
-        if (inventory.GetPossibleEvolutions().Count<=0)
+        foreach (PlayerInventory.Slot s in inventory.weaponSlots)
         {
-            Debug.LogWarning("No Available Evolution");
-            return;
+            Weapon w = s.item as Weapon;
+            if (w == null)
+            {
+                break; ; // pass to other weapon slots if current weapon empty
+
+            }
+            if (w.data.evolutionData == null)
+            {
+                continue; // pass to other weapon slots if current weapon dont have any evolution
+            }
+            //loop for every posisible evolution that have weapon
+            foreach (ItemData.Evolution e in w.data.evolutionData)
+            {
+                if (e.condition == ItemData.Evolution.Condition.anvil)
+                {
+                    bool attemp = w.AttempEvolution(e, 0);
+                    if (attemp)
+                    {
+						return;
+					}
+                }
+            }
         }
-        WeaponEvolution toEvolve = inventory.GetPossibleEvolutions()[Random.Range(0, inventory.GetPossibleEvolutions().Count)];
-        inventory.EvolveWeapon(toEvolve);
+        GameManager.instance.StartLevelUp();
     }
 }

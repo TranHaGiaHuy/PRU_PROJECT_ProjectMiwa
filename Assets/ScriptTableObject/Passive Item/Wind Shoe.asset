@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf5e8a4459987944a8a001d5870dc62, type: 3}
+  m_Name: Wind Shoe
+  m_EditorClassIdentifier: 
+  icon: {fileID: -1231220650, guid: 4e249bbe8a87fc44b8f0776887954d7f, type: 3}
+  maxLevel: 3
+  baseStats:
+    name: Wind Shoe
+    description: Increase your speed movement as wind.
+    boosts:
+      maxHealth: 0
+      recovery: 0
+      moveSpeed: 1
+      might: 0
+      projectileSpeed: 0
+      collectRange: 0
+  growth:
+  - name: Lv2
+    description: Now your shoe have extra engine!
+    boosts:
+      maxHealth: 0
+      recovery: 0
+      moveSpeed: 1
+      might: 0
+      projectileSpeed: 0
+      collectRange: 0
+  - name: Lv3
+    description: SPEEEEED
+    boosts:
+      maxHealth: 0
+      recovery: 0
+      moveSpeed: 1
+      might: 0
+      projectileSpeed: 0
+      collectRange: 0

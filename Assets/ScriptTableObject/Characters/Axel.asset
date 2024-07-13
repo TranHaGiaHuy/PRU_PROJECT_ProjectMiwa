@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3a376183af42041bec7ff2b761a067, type: 3}
+  m_Name: Axel
+  m_EditorClassIdentifier: 
+  icon: {fileID: 1018210545, guid: 379c823386c4330479a08d7169479a03, type: 3}
+  controller: {fileID: 9100000, guid: 0deb47227e4a30949a280db47711f530, type: 2}
+  name: Axel
+  startingWeapon: {fileID: 11400000, guid: 5489fca1211786c4989a2592b0ec2808, type: 2}
+  stats:
+    maxHealth: 1000
+    recovery: 0
+    moveSpeed: 5
+    might: 1
+    projectileSpeed: 1
+    collectRange: 30

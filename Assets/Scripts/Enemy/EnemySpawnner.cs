@@ -29,7 +29,7 @@ public class EnemySpawnner : MonoBehaviour
     
     public List<Wave> waves; //tao list cac wave
     public int currentWaveCount; //the INDEX of current waves ( start from 0) 
-    Transform player; // take player location when player is FAR to enemy, then move the enemy to near player by TELEPORT enemy to around player area
+    Transform player; // take owner location when owner is FAR to enemy, then move the enemy to near owner by TELEPORT enemy to around owner area
 
 
     [Header("Spawnner Attribute")]
@@ -41,7 +41,7 @@ public class EnemySpawnner : MonoBehaviour
     bool isWaveActive; // check wave hien tai
 
     [Header("Spawn Position")]
-    public List<Transform> relativeSpawnPoints; // List vi tri enemy spawn , dua tren vi tri player de PHAN BO xung quanh theo tung vi tri trong List nay
+    public List<Transform> relativeSpawnPoints; // List vi tri enemy spawn , dua tren vi tri owner de PHAN BO xung quanh theo tung vi tri trong List nay
 
      void Start()
     {

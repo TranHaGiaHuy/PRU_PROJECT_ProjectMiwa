@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf5e8a4459987944a8a001d5870dc62, type: 3}
+  m_Name: Healing Hamburger
+  m_EditorClassIdentifier: 
+  icon: {fileID: -1970598779, guid: 495b2cffc4850b04dbab6cb18d0fa0cf, type: 3}
+  maxLevel: 0
+  evolutionData: []
+  baseStats:
+    name: Healing Hamburger
+    description: Eat to heal!
+    boosts:
+      maxHealth: 0
+      recovery: 10
+      moveSpeed: 0
+      might: 0
+      projectileSpeed: 0
+      collectRange: 0
+  growth:
+  - name: Lv2
+    description: Healing stronger
+    boosts:
+      maxHealth: 0
+      recovery: 10
+      moveSpeed: 0
+      might: 0
+      projectileSpeed: 0
+      collectRange: 0
+  - name: Lv3
+    description: Healing stronger
+    boosts:
+      maxHealth: 0
+      recovery: 10
+      moveSpeed: 0
+      might: 0
+      projectileSpeed: 0
+      collectRange: 0

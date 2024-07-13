@@ -35,7 +35,7 @@ public class WeaponDataEditor : Editor
         if (selectedWeaponSubtype>0)
         {
 			weaponData.behaviour = weaponSubtypes[selectedWeaponSubtype].ToString();
-			EditorUtility.SetDirty(weaponData);
+            EditorUtility.SetDirty(weaponData);
 			DrawDefaultInspector();
         }
     }

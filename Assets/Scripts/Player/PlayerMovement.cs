@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float lastHorizontalVector;
     [HideInInspector] // check diem cuoi di chuyen quay huong nao de flip + auto ban vu khi
     public float lastVerticalVector;
-    
+    public Vector2 lastMovedVector;
 
     //References
     PlayerStats player;
@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        player=GetComponent<PlayerStats>();
+        player = GetComponent<PlayerStats>();
+        lastMovedVector = new Vector2(1, 0);
     }
     // Update is called once per frame
     private void Update()
@@ -46,18 +47,21 @@ public class PlayerMovement : MonoBehaviour
 
         float moveX = Input.GetAxisRaw("Horizontal"); // 1 pressed
         float moveY = Input.GetAxisRaw("Vertical");   // 0 not pressed\
-        moveDir = new Vector2 (moveX, moveY).normalized;
-        if (moveDir.x != 0 )
+        moveDir = new Vector2(moveX, moveY).normalized;
+        if (moveDir.x != 0)
         {
             lastHorizontalVector = moveDir.x;
+            lastMovedVector = new Vector2(lastHorizontalVector, 0f);
         }
-        if (moveDir.y != 0 )
+        if (moveDir.y != 0)
         {
             lastVerticalVector = moveDir.y;
+            lastMovedVector = new Vector2(0, lastVerticalVector);
 
         }
-        if(moveDir.x !=0 && moveDir.y != 0)
+        if (moveDir.x != 0 && moveDir.y != 0)
         {
+            lastMovedVector = new Vector2(lastHorizontalVector, lastVerticalVector);
         }
     }
     void Move()
@@ -66,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        rb.velocity = new Vector2(moveDir.x*player.CurrentMoveSpeed, moveDir.y* player.CurrentMoveSpeed);
+        rb.velocity = new Vector2(moveDir.x * player.CurrentMoveSpeed, moveDir.y * player.CurrentMoveSpeed);
     }
+   
 }
