@@ -6,16 +6,22 @@ using UnityEngine.UI;
 using TMPro;
 using System.Threading;
 using System.Diagnostics.Contracts;
+using Unity.Burst.CompilerServices;
 
 public class PlayerStats : MonoBehaviour
 {
+
 	CharacterData characterData;
 	public CharacterData.Stats baseStats;
 	[SerializeField]
 	CharacterData.Stats actualStats;
 
+	public CharacterData.Stats Stats
+	{
+		get { return actualStats; }
+		set { actualStats = value; }
+	}
 	float health;
-	#region Current Stats Properties
 	public float CurrentHealth
 	{
 		get { return health; }
@@ -24,14 +30,19 @@ public class PlayerStats : MonoBehaviour
 			if (health != value)
 			{
 				health = value;
-				if (GameManager.instance != null)
+
+                UpdateHealthBar();
+
+                /*if (GameManager.instance != null)
 				{
 					GameManager.instance.currentHealthDisplay.text = (int)CurrentHealth + "/" + actualStats.maxHealth;
 
-				}
-			}
-		}
+				}*/
+            }
+        }
 	}
+	/*#region Current Stats Properties
+	
 
 	public float MaxHealth
 	{
@@ -155,10 +166,11 @@ public class PlayerStats : MonoBehaviour
 			}
 		}
 	}
-	#endregion
+	#endregion*/
 
-
+	[Header("Visual")]
 	public ParticleSystem damageEffect;
+	public ParticleSystem blockedEffect;
 
 
 	//Experience leveling
@@ -200,6 +212,7 @@ public class PlayerStats : MonoBehaviour
 	//public GameObject firstPassiveItemTest,secondPassiveItemTest,secondWeaponTest;
 
 	PlayerAnimator playerAnimator;
+	PlayerCollector playerCollector;
 	private void Awake()
 	{
 		characterData = CharacterSelector.GetData();
@@ -209,12 +222,14 @@ public class PlayerStats : MonoBehaviour
         }
 
         inventory = GetComponent<PlayerInventory>();
+		playerCollector = GetComponentInChildren<PlayerCollector>();
 		
 		//Assign value
 		baseStats = actualStats = characterData.stats;
-		health = actualStats.maxHealth;
+		playerCollector.SetRadius(actualStats.collectRange);
+		health = baseStats.maxHealth;
 
-       playerAnimator = GetComponent<PlayerAnimator>();
+        playerAnimator = GetComponent<PlayerAnimator>();
 		if (characterData.controller)
 		{
             playerAnimator.SetSprites(characterData.Icon, characterData.controller);
@@ -225,14 +240,6 @@ public class PlayerStats : MonoBehaviour
 		experienceCap = levelRanges[0].experienceCapIncrease;
 
 		inventory.Add(characterData.StartingWeapon);
-
-		//Set up UI for Pause Screen
-		GameManager.instance.currentHealthDisplay.text = (int)health + "/" + actualStats.maxHealth;
-		GameManager.instance.currentRecoveryDisplay.text = CurrentRecovery.ToString();
-		GameManager.instance.currentMoveSpeedDisplay.text = CurrentMoveSpeed.ToString();
-		GameManager.instance.currentMightDisplay.text = CurrentMight.ToString();
-		GameManager.instance.currentProjectileSpeedDisplay.text = CurrentProjectileSpeed.ToString();
-		GameManager.instance.currentCollectRangeDisplay.text = CurrentCollectRange.ToString();
 
 		GameManager.instance.AssignChosenCharacrterUI(characterData);
 
@@ -259,7 +266,7 @@ public class PlayerStats : MonoBehaviour
 			recoverTimer = 0;
 		}*/
         //Recover for each 1s
-        if (CurrentRecovery>0)
+        if (Stats.recovery > 0)
         {
 			Recover();
 		}
@@ -276,7 +283,9 @@ public class PlayerStats : MonoBehaviour
 				actualStats += p.GetBoosts();
 			}
         }
+		playerCollector.SetRadius(actualStats.collectRange);
     }
+
 
 	public void IncreaseExp(int amount)
 	{
@@ -318,24 +327,36 @@ public class PlayerStats : MonoBehaviour
 	{
 		if (!isInvincible)
 		{
-			CurrentHealth -= dmg;
-            if (damageEffect)
+			dmg -= Stats.armor;
+            if (dmg>0)
             {
-                Destroy(Instantiate(damageEffect, transform.position,Quaternion.identity),5f);
+                CurrentHealth -= dmg;
+                if (damageEffect)
+                {
+                    Destroy(Instantiate(damageEffect, transform.position, Quaternion.identity), 5f);
+                }
+                if (dmg > 0 && CurrentHealth > 0)
+                {
+                    GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform, Color.red);
+                }
+
+                if (CurrentHealth <= 0)
+                {
+                    Kill();
+                }
+                UpdateHealthBar();
             }
-            if (dmg > 0 && CurrentHealth > 0)
+            else
 			{
-				GameManager.GenerateFloatingText(Mathf.FloorToInt(dmg).ToString(), transform, Color.red);
-			}
+                if (blockedEffect) 
+                {
+                    Destroy(Instantiate(blockedEffect, transform.position, Quaternion.identity), 5f);
+
+                }
+            }
 			invincibleTimer = invincibilityDuration;
 			isInvincible = true;
 
-			if (CurrentHealth <= 0)
-			{
-				Kill();
-			}
-
-			UpdateHealthBar();
 
 		}
 
@@ -369,18 +390,18 @@ public class PlayerStats : MonoBehaviour
 			{
 				GameManager.GenerateFloatingText(Mathf.FloorToInt(healthToRestore).ToString(), transform, Color.green);
 			}
+            UpdateHealthBar();
+        }
 
-		}
-
-		UpdateHealthBar();
+		
 	}
 	void Recover()
 	{
 		if (CurrentHealth < actualStats.maxHealth)
 		{
-            if (CurrentRecovery>0)
+            if (Stats.recovery>0)
             {
-				CurrentHealth += CurrentRecovery * Time.deltaTime;
+				CurrentHealth += Stats.recovery * Time.deltaTime;
 				recoverTimer += Time.deltaTime;
 				if (CurrentHealth > actualStats.maxHealth)
 				{
@@ -388,13 +409,14 @@ public class PlayerStats : MonoBehaviour
 				}
 				else if (recoverTimer > 1f)
 				{
-					GameManager.GenerateFloatingText(Mathf.FloorToInt(CurrentRecovery).ToString(), transform, Color.green);
+					GameManager.GenerateFloatingText(Mathf.FloorToInt(Stats.recovery).ToString(), transform, Color.green);
 					recoverTimer = 0f;
 				}
-			}
+                UpdateHealthBar();
+            }
            
 		}
-		UpdateHealthBar();
+		
 	}
 
 }

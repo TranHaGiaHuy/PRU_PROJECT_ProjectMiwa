@@ -7,11 +7,8 @@ using UnityEngine;
 public abstract class Weapon : Item
 {
     [System.Serializable]
-    public struct Stats
-    {
-        public string name;
-        public string description;
-
+    public class Stats : LevelData
+    { 
         [Header("Visuals")]
         public ParticleSystem hitEffect;
 		public Projectile projectilePrefab;
@@ -35,7 +32,7 @@ public abstract class Weapon : Item
         public static Stats operator +(Stats s1, Stats s2)
         {
             Stats result = new Stats();
-            result.name = s2.name ?? s1.name;
+            result.name = s2.name + s1.name;
             result.description = s2.description ?? s1.description;
             result.projectilePrefab = s2.projectilePrefab ?? s1.projectilePrefab;
             result.auraPrefab = s2.auraPrefab ?? s1.auraPrefab;
@@ -46,7 +43,7 @@ public abstract class Weapon : Item
             result.damageVariance = s1.damageVariance + s2.damageVariance;
             result.area = s1.area + s2.area;
             result.speed = s1.speed + s2.speed;
-            result.cooldown = s1.cooldown + s2.cooldown;
+            result.cooldown = s1.cooldown-s2.cooldown;
             result.number = s1.number + s2.number;
             result.pierce = s1.pierce + s2.pierce;
             result.projectTileInterval = s1.projectTileInterval + s2.projectTileInterval;
@@ -75,10 +72,10 @@ public abstract class Weapon : Item
         currentStats = data.baseStats;
         movement = FindObjectOfType<PlayerMovement>();
 
-        currentCooldown = currentStats.cooldown;
+       ActiveCoolDown(true);
     }
 
-    protected virtual void Awake()
+ /*   protected virtual void Awake()
     {
         if (data)
         {
@@ -91,14 +88,14 @@ public abstract class Weapon : Item
         {
             Initialise(data);
         }
-    }
+    }*/
 
     protected virtual void Update()
     {
         currentCooldown -=Time.deltaTime;
         if (currentCooldown <=0f)
         {
-            Attack(currentStats.number);
+            Attack(currentStats.number + owner.Stats.amount);
         }
     }
     public virtual Stats GetStats()
@@ -115,7 +112,7 @@ public abstract class Weapon : Item
             return false;
         }
 
-		currentStats += data.GetLevelData(++currentLevel);
+		currentStats += (Stats)data.GetLevelData(++currentLevel);
 		return true;
     }
     public virtual bool CanAttack() 
@@ -126,14 +123,28 @@ public abstract class Weapon : Item
     {
         if (CanAttack())
         {
-            currentCooldown += currentStats.cooldown;
+            /* currentCooldown += currentStats.cooldown;*/
+            ActiveCoolDown();
             return true;
         }
         return false;
     }
     public virtual float GetDamage()
     {
-        return currentStats.GetDamage() * owner.CurrentMight;
-    }                       
-    
+        return currentStats.GetDamage() * owner.Stats.might;
+    }
+    public virtual float GetArea()
+    {
+        return currentStats.area * owner.Stats.might;
+    }
+    public virtual bool ActiveCoolDown(bool strict = false)
+    {
+        if (strict && currentCooldown>0)
+        {
+            return false;
+        }
+        float actualCooldown = currentStats.cooldown * Owner.Stats.cooldown;
+        currentCooldown = Mathf.Min(actualCooldown, currentCooldown + actualCooldown);
+        return true;
+    }
 }

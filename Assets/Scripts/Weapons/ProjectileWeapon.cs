@@ -30,8 +30,9 @@ public class ProjectileWeapon : Weapon
 		if (!currentStats.projectilePrefab)
 		{
 			Debug.LogWarning("Projectile prefabs has not beeen set for {0}");
-			currentCooldown = data.baseStats.cooldown;
-			return false;
+		//	currentCooldown = data.baseStats.cooldown;
+            ActiveCoolDown(true);
+            return false;
 		}
 		if (!CanAttack())
 		{
@@ -48,10 +49,7 @@ public class ProjectileWeapon : Weapon
 		prefab.weapon = this;
 		prefab.owner = owner;
 
-        if (currentCooldown <=0)
-        {
-			currentCooldown += currentStats.cooldown;
-        }
+		ActiveCoolDown(true);
 		attackCount--;
 
         if (attackCount > 0)

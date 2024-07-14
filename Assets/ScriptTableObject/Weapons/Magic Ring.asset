@@ -49,7 +49,7 @@ MonoBehaviour:
     pierce: 0
     maxInstances: 50
   linearGrowth:
-  - name: Magic Ring
+  - name: Lv2
     description: Increase size and damage
     hitEffect: {fileID: 0}
     projectilePrefab: {fileID: 0}

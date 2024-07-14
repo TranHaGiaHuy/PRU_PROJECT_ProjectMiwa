@@ -40,7 +40,7 @@ MonoBehaviour:
     pierce: 1
     maxInstances: 70
   linearGrowth:
-  - name: Knife Lv2
+  - name: Lv2
     description: Fires 1 more knife.
     hitEffect: {fileID: 0}
     projectilePrefab: {fileID: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
     number: 1
     pierce: 0
     maxInstances: 0
-  - name: Knife Lv3
+  - name: Lv3
     description: Increase damage to 20.
     hitEffect: {fileID: 0}
     projectilePrefab: {fileID: 0}

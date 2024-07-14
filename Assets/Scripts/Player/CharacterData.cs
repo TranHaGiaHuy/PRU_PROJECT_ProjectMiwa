@@ -22,7 +22,7 @@ public class CharacterData : ScriptableObject
 	[System.Serializable]
 	public struct Stats
 	{
-		public float maxHealth, recovery, moveSpeed, might, projectileSpeed, collectRange;
+		/*public float maxHealth, recovery, moveSpeed, might, projectileSpeed, collectRange;
 
 		public Stats(float maxHealth = 1000, float recovery = 0, float moveSpeed = 1f, float might = 1f, float projectileSpeed = 1f, float collectRange = 30f)
 		{
@@ -32,18 +32,47 @@ public class CharacterData : ScriptableObject
 			this.might = might;
 			this.projectileSpeed = projectileSpeed;
 			this.collectRange = collectRange;
-		}
+		}*/
 
-		public static Stats operator +(Stats s1, Stats s2)
+		public float maxHealth, recovery, armor;
+		//Percent stats
+		[Range(-1, 10)] public float moveSpeed, might, area;
+        [Range(-1, 5)]public float projectileSpeed, duration;
+        [Range(-1, 10)] public int amount;
+        [Range(-1, 1)] public float cooldown;
+        [Min(-1)] public float luck, growth, greed, curse;
+        //End Percent stats
+        public float collectRange;
+		public int revival;
+
+
+        public static Stats operator +(Stats s1, Stats s2)
 		{
-			s1.maxHealth += s2.maxHealth;
-			s1.recovery += s2.recovery;
-			s1.moveSpeed += s2.moveSpeed;
-			s1.might += s2.might;
-			s1.projectileSpeed += s2.projectileSpeed;
-			s1.collectRange += s2.collectRange;
+			s1.maxHealth	+= s2.maxHealth;
+			s1.recovery		+= s2.recovery;
+			s1.armor		+= s2.armor;
+			s1.moveSpeed	+= s2.moveSpeed;
+			s1.might		+= s2.might;
+			s1.area			+= s2.area;
+			s1.duration		+= s2.duration;
+			s1.amount		+= s2.amount;
+			s1.cooldown		+= s2.cooldown;
+			s1.luck			+= s2.luck;
+			s1.growth		+= s2.growth;
+			s1.greed		+= s2.greed;
+			s1.curse		+= s2.curse;
+            s1.collectRange += s2.collectRange;
+            s1.projectileSpeed += s2.projectileSpeed;
+
 			return s1;
 		}
 	}
-	public Stats stats = new Stats(1000);
+	public Stats stats = new Stats
+	{
+		maxHealth = 100,	might = 1,	amount = 0, duration = 1,
+		recovery = 0,		armor = 0,	moveSpeed = 5,
+        projectileSpeed = 1,area = 1,	growth = 1,	cooldown = 1,
+        collectRange = 1,	luck = 1,	greed = 1,	curse = 1
+    };
+
 }

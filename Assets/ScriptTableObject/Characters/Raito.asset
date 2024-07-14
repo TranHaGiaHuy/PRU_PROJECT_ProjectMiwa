@@ -22,4 +22,4 @@ MonoBehaviour:
     moveSpeed: 5
     might: 1
     projectileSpeed: 1
-    collectRange: 30
+    collectRange: 3

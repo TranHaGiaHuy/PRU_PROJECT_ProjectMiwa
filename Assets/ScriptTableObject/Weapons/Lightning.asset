@@ -19,7 +19,7 @@ MonoBehaviour:
   baseStats:
     name: Lightning Ring
     description: Strikes at random enemies
-    hitEffect: {fileID: 7098363870723422386, guid: 85974c99315b308439843bc7c15d0e8a, type: 3}
+    hitEffect: {fileID: 6088116193909567435, guid: 85974c99315b308439843bc7c15d0e8a, type: 3}
     projectilePrefab: {fileID: 0}
     auraPrefab: {fileID: 0}
     spawnVariance:
@@ -33,14 +33,14 @@ MonoBehaviour:
     damageVariance: 0
     area: 1
     speed: 0
-    cooldown: 4
+    cooldown: 3
     projectTileInterval: 0.05
     knockback: 1
-    number: 1
+    number: 2
     pierce: 0
     maxInstances: 50
   linearGrowth:
-  - name: Lightning Ring Lv2
+  - name: Lv2
     description: 
     hitEffect: {fileID: 0}
     projectilePrefab: {fileID: 0}
@@ -56,10 +56,10 @@ MonoBehaviour:
     damageVariance: 0
     area: 0
     speed: 0
-    cooldown: 0
+    cooldown: 1
     projectTileInterval: 0
     knockback: 0
-    number: 0
+    number: 2
     pierce: 0
     maxInstances: 0
   randomGrowth: []

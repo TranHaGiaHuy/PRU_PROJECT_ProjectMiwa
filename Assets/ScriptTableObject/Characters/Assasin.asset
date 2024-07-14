@@ -19,7 +19,17 @@ MonoBehaviour:
   stats:
     maxHealth: 1000
     recovery: 0
-    moveSpeed: 5
+    armor: 0
+    moveSpeed: 1
     might: 1
+    area: 1
     projectileSpeed: 1
-    collectRange: 10
+    duration: 1
+    amount: 0
+    cooldown: 1
+    luck: 1
+    growth: 1
+    greed: 1
+    curse: 1
+    collectRange: 1
+    revival: 0

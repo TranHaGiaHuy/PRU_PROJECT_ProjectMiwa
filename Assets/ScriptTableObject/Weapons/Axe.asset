@@ -38,9 +38,9 @@ MonoBehaviour:
     knockback: 1
     number: 1
     pierce: 2
-    maxInstances: 70
+    maxInstances: 10
   linearGrowth:
-  - name: Axe Lv2
+  - name: Lv2
     description: Fires 1 more axe
     hitEffect: {fileID: 0}
     projectilePrefab: {fileID: 0}

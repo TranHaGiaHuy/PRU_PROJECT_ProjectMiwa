@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 87036581
   m_SortingLayer: 3
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1889797634, guid: e2731fbe6ccba5948aa7ead0cd976028, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -203,10 +203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f7e8453b9a14544b8198ef41bc5fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  owner: {fileID: 0}
   weapon: {fileID: 0}
   damageSource: 0
   hasAutoAim: 0
   rotationSpeed: {x: 0, y: 0, z: 0}
-  rb: {fileID: 0}
   shootingDirection: {fileID: 0}

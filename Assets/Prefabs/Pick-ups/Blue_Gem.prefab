@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 479128417820399447}
   - component: {fileID: 4398892205825356213}
   - component: {fileID: -6060508696824461205}
-  - component: {fileID: 5318328821714427921}
   - component: {fileID: -5395965463358664408}
-  - component: {fileID: 8000350890558510061}
+  - component: {fileID: 3053941969247375141}
   m_Layer: 0
   m_Name: Blue_Gem
   m_TagString: Untagged
@@ -123,20 +122,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.328125
---- !u!114 &5318328821714427921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5294898996717655274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0a910840662484190800316ff2bdac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasBeenCollected: 0
-  exp: 100
 --- !u!50 &-5395965463358664408
 Rigidbody2D:
   serializedVersion: 4
@@ -164,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8000350890558510061
+--- !u!114 &3053941969247375141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,9 +158,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5294898996717655274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3c893f1abdf16141891a866be9adee8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4062d24016c257e4cae10199d4ffc573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMove: 3
-  rangeMove: 0.1
-  direction: {x: 0, y: 1, z: 0}
+  hasBeenCollected: 0
+  lifespan: 3
+  bobbingAnimation:
+    frequency: 2
+    direction: {x: 0, y: 0.3}
+  exp: 90
+  healthToRestore: 0

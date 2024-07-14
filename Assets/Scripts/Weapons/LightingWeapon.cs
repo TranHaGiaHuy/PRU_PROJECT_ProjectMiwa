@@ -12,7 +12,8 @@ public class LightingWeapon : ProjectileWeapon
         if (!currentStats.hitEffect)
         {
             Debug.LogWarning("Projectile prefabs has not beeen set for " + name);
-            currentCooldown = data.baseStats.cooldown;
+           // currentCooldown = data.baseStats.cooldown;
+            ActiveCoolDown(true);
             return false;
         }
         if (!CanAttack())
@@ -22,14 +23,14 @@ public class LightingWeapon : ProjectileWeapon
         if (currentCooldown <= 0)
         {
             allSelectedEnemies = new List<EnemyStats>(FindObjectsOfType<EnemyStats>());
-            currentCooldown += data.baseStats.cooldown;
+            ActiveCoolDown(true);
             currentAttackCount = attackCount;
         }
 
         EnemyStats target = PickEnemy();
         if (target)
         {
-            DamageArea(target.transform.position, currentStats.area, GetDamage());
+            DamageArea(target.transform.position, GetArea(), GetDamage());
 
             Instantiate(currentStats.hitEffect, target.transform.position, Quaternion.identity);
         }

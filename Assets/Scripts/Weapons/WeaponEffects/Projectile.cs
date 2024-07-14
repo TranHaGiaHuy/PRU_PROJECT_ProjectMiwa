@@ -22,15 +22,19 @@ public class Projectile : WeaponEffect
 		mousePos= shootingDirection.transform.position - transform.position;
 		rb = GetComponent<Rigidbody2D>();
 
-        Debug.Log(weapon.data.name);
         Weapon.Stats stats = weapon.GetStats();
         if (rb.bodyType == RigidbodyType2D.Dynamic)
         {
             rb.angularVelocity = rotationSpeed.z;
-            rb.velocity = transform.right * stats.speed;
+            rb.velocity = transform.right * stats.speed * weapon.Owner.Stats.projectileSpeed;
         }
 
-        float area = stats.area ==0? 1:stats.area;
+        float area =weapon.GetArea();
+        if (area<=0)
+        {
+            area = 1;
+        }
+
         transform.localScale = new Vector3(
             area * Mathf.Sign(transform.localScale.x),
             area * Mathf.Sign(transform.localScale.y)
@@ -68,7 +72,7 @@ public class Projectile : WeaponEffect
         if (rb.bodyType == RigidbodyType2D.Kinematic)
         {
             Weapon.Stats stats = weapon.GetStats();
-            transform.position += mousePos * stats.speed * Time.fixedDeltaTime;
+            transform.position += mousePos * stats.speed * weapon.Owner.Stats.projectileSpeed* Time.fixedDeltaTime;
             rb.MovePosition(transform.position);
             transform.Rotate(rotationSpeed * Time.fixedDeltaTime);
         }
@@ -81,7 +85,6 @@ public class Projectile : WeaponEffect
 
         if (es)
         {
-            Debug.LogWarning("Gay sat thuong");
             Vector3 source  =  damageSource == DamageSource.owner && owner ? owner.transform.position : transform.position;
             es.TakeDamage(GetDamage(),source);
             Weapon.Stats stats = weapon.GetStats();

@@ -9,9 +9,8 @@ public class Passive : Item
     CharacterData.Stats currentBoosts;
 
     [System.Serializable]
-    public struct Modifier
+    public class Modifier : LevelData
     {
-        public string name, description;
         public CharacterData.Stats boosts;
     }
     public virtual void Initialise(PassiveData data)
@@ -34,7 +33,7 @@ public class Passive : Item
             Debug.LogWarning("Can not level up "+name+" to Level " + currentLevel+ ", max level of "+data.maxLevel+" already reached.");
             return false;
         }
-        currentBoosts += data.GetLevelData(++currentLevel).boosts;
+        currentBoosts += ((Modifier)data.GetLevelData(++currentLevel)).boosts;
         return true;
     }
 }

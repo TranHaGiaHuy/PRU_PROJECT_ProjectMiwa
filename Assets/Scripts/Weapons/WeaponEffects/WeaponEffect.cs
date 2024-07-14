@@ -14,7 +14,9 @@ namespace Assets.Scripts.Weapons
 		[HideInInspector]
 		public Weapon weapon;
 
-		public float GetDamage()
+        public PlayerStats Owner { get { return owner; } }
+
+        public float GetDamage()
 		{
 			return weapon.GetDamage();
 		}

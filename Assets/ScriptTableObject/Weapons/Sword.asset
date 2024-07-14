@@ -24,7 +24,7 @@ MonoBehaviour:
     auraPrefab: {fileID: 0}
     spawnVariance:
       serializedVersion: 2
-      x: 2
+      x: 1.5
       y: 0
       width: 0
       height: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     pierce: 99
     maxInstances: 99
   linearGrowth:
-  - name: Sword Lv2
+  - name: Lv2
     description: Fires 1 more slash
     hitEffect: {fileID: 0}
     projectilePrefab: {fileID: 0}

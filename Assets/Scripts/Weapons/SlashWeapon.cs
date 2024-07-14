@@ -14,8 +14,8 @@ using UnityEngine;
             if (!currentStats.projectilePrefab)
             {
                 Debug.LogWarning("Projectile prefabs has not beeen set for " + name);
-                currentCooldown = data.baseStats.cooldown;
-                return false;
+            ActiveCoolDown(true);
+            return false;
             }
             if (!CanAttack())
             {
@@ -50,7 +50,7 @@ using UnityEngine;
 
 
             prefab.weapon = this;
-            currentCooldown = data.baseStats.cooldown;
+            ActiveCoolDown(true);
             attackCount--;
 
             currentSpawnCount++;

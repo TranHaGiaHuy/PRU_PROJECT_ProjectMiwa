@@ -14,32 +14,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: -1231220650, guid: 4e249bbe8a87fc44b8f0776887954d7f, type: 3}
   maxLevel: 3
+  evolutionData: []
   baseStats:
     name: Wind Shoe
     description: Increase your speed movement as wind.
     boosts:
       maxHealth: 0
       recovery: 0
+      armor: 0
       moveSpeed: 1
       might: 0
+      area: 0
       projectileSpeed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       collectRange: 0
+      revival: 0
   growth:
   - name: Lv2
     description: Now your shoe have extra engine!
     boosts:
       maxHealth: 0
       recovery: 0
-      moveSpeed: 1
+      armor: 0
+      moveSpeed: 0.1
       might: 0
+      area: 0
       projectileSpeed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       collectRange: 0
+      revival: 0
   - name: Lv3
     description: SPEEEEED
     boosts:
       maxHealth: 0
       recovery: 0
-      moveSpeed: 1
+      armor: 0
+      moveSpeed: 0.1
       might: 0
+      area: 0
       projectileSpeed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       collectRange: 0
+      revival: 0
