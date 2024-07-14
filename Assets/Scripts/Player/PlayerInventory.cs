@@ -482,7 +482,6 @@ public class PlayerInventory : MonoBehaviour
           }*/
     public void ApplyUpgradeOptions()
     {
-
         List<ItemData> availableUpgrades = new List<ItemData>();
         List<ItemData> allUpgrades = new List<ItemData>(availableWeapons);
         allUpgrades.AddRange(availablePassives);

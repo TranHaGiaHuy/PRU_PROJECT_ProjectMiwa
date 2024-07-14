@@ -53,7 +53,6 @@ public class UIUpgradeWindow : MonoBehaviour
         {
             for (int i = upgradeOptions.Count; i < pick; i++)
             {
-
                 GameObject go = Instantiate(upgradeOptionTemplate.gameObject, transform);
                 upgradeOptions.Add((RectTransform)go.transform);
             }
@@ -120,8 +119,6 @@ public class UIUpgradeWindow : MonoBehaviour
                 {
                     icon.sprite = selected.icon;
                 }
-
-
 
                 Button b = r.Find(buttonPath).GetComponent<Button>();
                 if (b)

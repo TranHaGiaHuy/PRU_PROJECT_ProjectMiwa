@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0da6a1b15bdf24dbd4a3c2b87142d5, type: 3}
+  m_Name: ListMap
+  m_EditorClassIdentifier: 
+  listMaps:
+  - mapName: Peaceful Island
+    mapDif: Easy
+    mapPrefab: {fileID: 1129483601, guid: 724e15a35412d354e854b882e21d12b8, type: 3}
+  - mapName: Dry Desert
+    mapDif: Hard
+    mapPrefab: {fileID: -608414186, guid: 5863d637837ae354a8eec3633796a493, type: 3}
