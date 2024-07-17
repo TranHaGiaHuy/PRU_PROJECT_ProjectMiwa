@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listMaps:
   - mapName: Peaceful Island
-    mapDif: Easy
-    mapPrefab: {fileID: 1129483601, guid: 724e15a35412d354e854b882e21d12b8, type: 3}
+    mapStageToChange: Stage1
+    mapPrefab: {fileID: 21300000, guid: 3ef53bd8a2c7986408e6782f99e76872, type: 3}
   - mapName: Dry Desert
-    mapDif: Hard
-    mapPrefab: {fileID: -608414186, guid: 5863d637837ae354a8eec3633796a493, type: 3}
+    mapStageToChange: Stage2
+    mapPrefab: {fileID: 21300000, guid: 93132e159e9a2964aa70428c726fee22, type: 3}

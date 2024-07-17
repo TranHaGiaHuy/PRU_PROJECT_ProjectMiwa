@@ -70,10 +70,12 @@ public class UIUpgradeWindow : MonoBehaviour
         {
             if (activeOptions < pick && activeOptions < totalPossibleUpgrades)
             {
+
                 r.gameObject.SetActive(true);
 
                 // Select one of the possible upgrades, then remove it from the list.
                 ItemData selected = possibleUpgrades[UnityEngine.Random.Range(0, possibleUpgrades.Count)];
+
                 possibleUpgrades.Remove(selected);
                 Item item = inventory.Get(selected);
 
@@ -95,9 +97,15 @@ public class UIUpgradeWindow : MonoBehaviour
                         }
                         else
                         {
-                            level.text = selected.GetLevelData(item.currentLevel).name;
+                            level.text = selected.GetLevelData(item.currentLevel+1).name;
                             level.color = levelTextColor;
                         }
+                    }
+                    else
+                    {
+                        level.text = newtext;
+                        level.color = levelTextColor;
+
                     }
                 }
                 TextMeshProUGUI desc = r.Find(descriptionPath).GetComponent<TextMeshProUGUI>();
@@ -181,7 +189,6 @@ public class UIUpgradeWindow : MonoBehaviour
         }
     }
     void Awake()
-
     {
         // Populates all our important variables.
         verticalLayout = GetComponentInChildren<VerticalLayoutGroup>();

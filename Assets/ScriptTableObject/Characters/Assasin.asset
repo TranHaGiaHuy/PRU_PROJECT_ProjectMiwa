@@ -17,17 +17,17 @@ MonoBehaviour:
   name: Assasin
   startingWeapon: {fileID: 11400000, guid: 53cc44ef10534ed4f9c41783b961f1cf, type: 2}
   stats:
-    maxHealth: 1000
+    maxHealth: 800
     recovery: 0
-    armor: 0
-    moveSpeed: 1
-    might: 1
+    armor: 5
+    moveSpeed: 1.2
+    might: 1.1
     area: 1
-    projectileSpeed: 1
+    projectileSpeed: 1.2
     duration: 1
     amount: 0
     cooldown: 1
-    luck: 1
+    luck: 1.5
     growth: 1
     greed: 1
     curse: 1

@@ -237,7 +237,10 @@ public class PlayerStats : MonoBehaviour
     }
 	private void Start()
 	{
-		experienceCap = levelRanges[0].experienceCapIncrease;
+		AudioManager.Instance.musicSource.Stop();
+        AudioManager.Instance.PlayerMusic("Theme");
+
+        experienceCap = levelRanges[0].experienceCapIncrease;
 
 		inventory.Add(characterData.StartingWeapon);
 
@@ -309,6 +312,7 @@ public class PlayerStats : MonoBehaviour
 					break;
 				}
 			}
+			AudioManager.Instance.PlayerSFX("LevelUp");
 			experienceCap += experienceCapIncrease;
 			UpdateLevelText();
 			GameManager.instance.StartLevelUp();
@@ -328,6 +332,7 @@ public class PlayerStats : MonoBehaviour
 		if (!isInvincible)
 		{
 			dmg -= Stats.armor;
+            AudioManager.Instance.PlayerSFX("Damaged");
             if (dmg>0)
             {
                 CurrentHealth -= dmg;

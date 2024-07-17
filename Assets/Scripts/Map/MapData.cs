@@ -12,7 +12,7 @@ public class MapData : ScriptableObject
     public class Map
     {
         public string mapName;
-        public string mapDif;
+        public string mapStageToChange;
         public Sprite mapPrefab;
     }
 

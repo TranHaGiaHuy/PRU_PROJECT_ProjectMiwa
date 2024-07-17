@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickupItem : MonoBehaviour
 {
     public bool hasBeenCollected = false;
-
+//Magnet
     public float lifespan = 0.5f;
     protected PlayerStats target;
     protected float speed;
@@ -13,6 +13,7 @@ public class PickupItem : MonoBehaviour
     float randomOffset;
 
 
+    //Hieu ung
     [System.Serializable]
     public struct BobbingAnimation
     {
@@ -41,13 +42,12 @@ public class PickupItem : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (target)
+        if (target) // item magnet to player
         {
             Vector2 distance = target.transform.position - transform.position;
             if (distance.sqrMagnitude > speed * speed * Time.deltaTime)
             {
-                transform.position += (Vector3)distance.normalized * speed * Time.deltaTime;
-
+                transform.position += (Vector3)distance.normalized * speed * Time.deltaTime; // cap nhat vi tri lien tuc bam theo player
             }
             else
             {
@@ -56,6 +56,7 @@ public class PickupItem : MonoBehaviour
         }
         else
         {
+            //hieu ung bobbing tai cho
             transform.position = initialPosition + bobbingAnimation.direction * Mathf.Sin((Time.time+randomOffset) * bobbingAnimation.frequency);
         }
     }

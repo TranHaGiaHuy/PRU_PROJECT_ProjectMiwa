@@ -78,12 +78,13 @@ public class Projectile : WeaponEffect
         }
     }
 
+    //Weapon hit targer
 	protected virtual void OnTriggerEnter2D(Collider2D other)
 	{
 		EnemyStats es = other.GetComponent<EnemyStats>();
         BreakableProps bp = other.GetComponent<BreakableProps>();
 
-        if (es)
+        if (es) // if enemy
         {
             Vector3 source  =  damageSource == DamageSource.owner && owner ? owner.transform.position : transform.position;
             es.TakeDamage(GetDamage(),source);
@@ -94,7 +95,7 @@ public class Projectile : WeaponEffect
                 Destroy(Instantiate(stats.hitEffect, transform.position, Quaternion.identity), 5f);
             }
         }
-        else if (bp)
+        else if (bp) // if prop: stone, tree,...
         {
 			bp.TakeDamage(GetDamage());
 			piercing--;

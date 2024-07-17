@@ -12,35 +12,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf5e8a4459987944a8a001d5870dc62, type: 3}
   m_Name: Healing Hamburger
   m_EditorClassIdentifier: 
-  icon: {fileID: -1970598779, guid: 495b2cffc4850b04dbab6cb18d0fa0cf, type: 3}
-  maxLevel: 0
+  icon: {fileID: 2067336014, guid: 495b2cffc4850b04dbab6cb18d0fa0cf, type: 3}
+  maxLevel: 3
   evolutionData: []
   baseStats:
     name: Healing Hamburger
     description: Eat to heal!
     boosts:
       maxHealth: 0
-      recovery: 10
+      recovery: 30
+      armor: 0
       moveSpeed: 0
       might: 0
+      area: 0
       projectileSpeed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       collectRange: 0
+      revival: 0
   growth:
   - name: Lv2
     description: Healing stronger
     boosts:
       maxHealth: 0
-      recovery: 10
+      recovery: 20
+      armor: 0
       moveSpeed: 0
       might: 0
+      area: 0
       projectileSpeed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       collectRange: 0
+      revival: 0
   - name: Lv3
     description: Healing stronger
     boosts:
       maxHealth: 0
-      recovery: 10
+      recovery: 20
+      armor: 0
       moveSpeed: 0
       might: 0
+      area: 0
       projectileSpeed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       collectRange: 0
+      revival: 0

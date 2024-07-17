@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
         float moveX = Input.GetAxisRaw("Horizontal"); // 1 pressed
         float moveY = Input.GetAxisRaw("Vertical");   // 0 not pressed\
         moveDir = new Vector2(moveX, moveY).normalized;

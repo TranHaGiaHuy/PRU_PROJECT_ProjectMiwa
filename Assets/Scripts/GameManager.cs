@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject gameOverScreen;
     public GameObject levelUpScreen;
+    public GameObject musicScreen;
+
 
 
     [Header("Current Stats To Display")]
@@ -155,6 +157,7 @@ public class GameManager : MonoBehaviour
             {
                 PauseGame();
             }
+          
         }
     }
     void DisableScreens()
@@ -162,7 +165,7 @@ public class GameManager : MonoBehaviour
         pauseScreen.SetActive(false);
         gameOverScreen.SetActive(false);
         levelUpScreen.SetActive(false);
-
+        musicScreen.SetActive(false);
     }
     public void GameOver()
     {
@@ -171,6 +174,7 @@ public class GameManager : MonoBehaviour
     }
     void DisplayResults()
     {
+        AudioManager.Instance.PlayerSFX("GameOver");
         gameOverScreen.SetActive(true);
     }
     public void AssignChosenCharacrterUI(CharacterData characterData)
@@ -223,6 +227,7 @@ public class GameManager : MonoBehaviour
         UpdateStopwatchDisplay();
         if (stopwatchTime>=timeLimit)
         {
+            AudioManager.Instance.PlayerSFX("Wining");
             playerObject.SendMessage("Kill");
         }
     }

@@ -38,8 +38,9 @@ using UnityEngine;
             currentStats.projectilePrefab,
             owner.transform.position + (Vector3)spawnOffset,
             Quaternion.Euler(0, 0, angle) );
+        AudioManager.Instance.PlayerSFX("Slash");
 
-            prefab.owner = owner;
+        prefab.owner = owner;
 
 
             if (spawnDir < 0)

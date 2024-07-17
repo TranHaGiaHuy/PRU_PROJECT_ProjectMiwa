@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf5e8a4459987944a8a001d5870dc62, type: 3}
   m_Name: Wind Shoe
   m_EditorClassIdentifier: 
-  icon: {fileID: -1231220650, guid: 4e249bbe8a87fc44b8f0776887954d7f, type: 3}
+  icon: {fileID: 152116987, guid: 495b2cffc4850b04dbab6cb18d0fa0cf, type: 3}
   maxLevel: 3
   evolutionData: []
   baseStats:
@@ -22,7 +22,7 @@ MonoBehaviour:
       maxHealth: 0
       recovery: 0
       armor: 0
-      moveSpeed: 1
+      moveSpeed: 0.5
       might: 0
       area: 0
       projectileSpeed: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
       maxHealth: 0
       recovery: 0
       armor: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.5
       might: 0
       area: 0
       projectileSpeed: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
       maxHealth: 0
       recovery: 0
       armor: 0
-      moveSpeed: 0.1
+      moveSpeed: 0.3
       might: 0
       area: 0
       projectileSpeed: 0

@@ -29,13 +29,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8700166124397117186}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6736417309571335625
 SpriteRenderer:
@@ -139,7 +139,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -184,6 +184,9 @@ MonoBehaviour:
   currentHealth: 0
   currentDamage: 0
   despawnDistance: 20
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  damageFlashDuration: 0.2
+  deathFadeTime: 0.6
 --- !u!114 &7820844118338720737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +206,6 @@ MonoBehaviour:
   - name: Health potion
     itemPrefab: {fileID: 6690506008235337922, guid: f303b3b4b070ad44883f85a8ecfb8fa2, type: 3}
     dropRate: 5
+  - name: Anvil
+    itemPrefab: {fileID: 5322630719110582778, guid: ad1bfae784a044647ab92b1f8c3f9fa6, type: 3}
+    dropRate: 1

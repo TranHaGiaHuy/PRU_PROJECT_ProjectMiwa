@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static MapData;
 
 public class MapController:MonoBehaviour
     {
     public MapData listMaps;
     public TMP_Text nameMap;
     public SpriteRenderer mapPic;
-
     private int selectedIndex = 0;
+    private MapData.Map map;
 
     private void Start()
     {
@@ -22,9 +23,18 @@ public class MapController:MonoBehaviour
     }
     private void UpdateMapDisplay()
     {
-        MapData.Map map = listMaps.getMap(selectedIndex);
+       map = listMaps.getMap(selectedIndex);
         nameMap.text = map.mapName;
         mapPic.sprite = map.mapPrefab;
+    }
+     
+    public void Play()
+    {
+        SceneController sc = FindObjectOfType<SceneController>();
+        Debug.Log(sc == null);
+        Debug.Log(map.mapStageToChange);
+
+        sc.SceneChange(map.mapStageToChange);
     }
 
     public void NextMapOptions()

@@ -33,6 +33,8 @@ public class LightingWeapon : ProjectileWeapon
             DamageArea(target.transform.position, GetArea(), GetDamage());
 
             Instantiate(currentStats.hitEffect, target.transform.position, Quaternion.identity);
+            AudioManager.Instance.PlayerSFX("Lightning");
+
         }
         if (attackCount>0)
         {

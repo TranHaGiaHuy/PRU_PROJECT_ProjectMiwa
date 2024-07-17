@@ -24,6 +24,7 @@ public class AuraWeapon : Weapon
 
             float area = GetArea();
             currentAura.transform.localScale = new Vector3(area, area, area);
+            AudioManager.Instance.PlayerSFX("Magic");
 
         }
     }

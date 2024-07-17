@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Axel
   m_EditorClassIdentifier: 
   icon: {fileID: 1018210545, guid: 379c823386c4330479a08d7169479a03, type: 3}
-  controller: {fileID: 9100000, guid: 0deb47227e4a30949a280db47711f530, type: 2}
+  controller: {fileID: 22100000, guid: 5ede4d3cd9b31ad41bef679aae490506, type: 2}
   name: Axel
   startingWeapon: {fileID: 11400000, guid: 5489fca1211786c4989a2592b0ec2808, type: 2}
   stats:
-    maxHealth: 1000
+    maxHealth: 1500
     recovery: 0
-    moveSpeed: 5
+    armor: 20
+    moveSpeed: 1
     might: 1
-    projectileSpeed: 1
+    area: 1
+    projectileSpeed: 1.3
+    duration: 1
+    amount: 0
+    cooldown: 1
+    luck: 1
+    growth: 1
+    greed: 1
+    curse: 1
     collectRange: 1
+    revival: 0

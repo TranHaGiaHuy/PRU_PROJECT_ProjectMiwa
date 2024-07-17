@@ -51,6 +51,7 @@ public class EnemyStats : MonoBehaviour
     {
 
         currentHealth -= dmg;
+        AudioManager.Instance.PlayerSFX("Hit");
         StartCoroutine(DamageFlash());
         if (dmg>0)
         {

@@ -36,7 +36,7 @@ MonoBehaviour:
     cooldown: 1
     projectTileInterval: 0.1
     knockback: 0.5
-    number: 2
+    number: 1
     pierce: 1
     maxInstances: 70
   linearGrowth:

@@ -13,13 +13,23 @@ MonoBehaviour:
   m_Name: Raito
   m_EditorClassIdentifier: 
   icon: {fileID: 633616216, guid: 9ddc4fafa9bb1b5409bc2e1e9263c66b, type: 3}
-  controller: {fileID: 22100000, guid: c3cd92bfdaee8db47b3afbc52cac083d, type: 2}
+  controller: {fileID: 22100000, guid: d0799aaece25678458f604b1bc36adff, type: 2}
   name: Raito
   startingWeapon: {fileID: 11400000, guid: 787d6a60e39e3d04a8d489977b359f09, type: 2}
   stats:
     maxHealth: 800
-    recovery: 0
-    moveSpeed: 5
+    recovery: 20
+    armor: 0
+    moveSpeed: 1
     might: 1
+    area: 1
     projectileSpeed: 1
+    duration: 1
+    amount: 0
+    cooldown: 1
+    luck: 1
+    growth: 1
+    greed: 1
+    curse: 1
     collectRange: 3
+    revival: 0

@@ -17,9 +17,19 @@ MonoBehaviour:
   name: Magi
   startingWeapon: {fileID: 11400000, guid: 78b2d2823216000498aac2afecfe527a, type: 2}
   stats:
-    maxHealth: 10000
+    maxHealth: 1000
     recovery: 10
-    moveSpeed: 5
+    armor: 0
+    moveSpeed: 1
     might: 1
-    projectileSpeed: 0
+    area: 1
+    projectileSpeed: 1
+    duration: 1
+    amount: 0
+    cooldown: 1
+    luck: 1
+    growth: 1
+    greed: 1
+    curse: 1
     collectRange: 2
+    revival: 0

@@ -45,8 +45,9 @@ public class ProjectileWeapon : Weapon
 			owner.transform.position + (Vector3)GetSpawnOffset(spawnAngle),
 			Quaternion.Euler(0,0,spawnAngle)
 			);
+        AudioManager.Instance.PlayerSFX("Slash");
 
-		prefab.weapon = this;
+        prefab.weapon = this;
 		prefab.owner = owner;
 
 		ActiveCoolDown(true);

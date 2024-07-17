@@ -5,11 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+
+
     public void SceneChange(string name)
     {
+        AudioManager.Instance.PlayerSFX("GameStart");
+        if (name=="Menu")
+        {
+            AudioManager.Instance.musicSource.Stop();
+        AudioManager.Instance.PlayerMusic("Menu");
+
+        }
         SceneManager.LoadScene(name);
         Time.timeScale = 1f;
     }
+
+
+
     public void Quit()
     {
 #if UNITY_EDITOR

@@ -177,4 +177,4 @@ MonoBehaviour:
     frequency: 2
     direction: {x: 0, y: 0.3}
   exp: 0
-  healthToRestore: 1
+  healthToRestore: 100

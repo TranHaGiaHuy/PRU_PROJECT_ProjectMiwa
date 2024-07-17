@@ -41,7 +41,29 @@ MonoBehaviour:
     maxInstances: 50
   linearGrowth:
   - name: Lv2
-    description: 
+    description: Increase 2 lighgning
+    hitEffect: {fileID: 0}
+    projectilePrefab: {fileID: 0}
+    auraPrefab: {fileID: 0}
+    spawnVariance:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    lifeSpan: 0
+    damage: 0
+    damageVariance: 0
+    area: 0
+    speed: 0
+    cooldown: 1
+    projectTileInterval: 0
+    knockback: 0
+    number: 2
+    pierce: 0
+    maxInstances: 0
+  - name: Lv3
+    description: Increase 2 lightning
     hitEffect: {fileID: 0}
     projectilePrefab: {fileID: 0}
     auraPrefab: {fileID: 0}

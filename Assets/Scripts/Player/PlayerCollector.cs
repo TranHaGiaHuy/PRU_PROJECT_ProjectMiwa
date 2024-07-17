@@ -8,13 +8,11 @@ public class PlayerCollector : MonoBehaviour
     CircleCollider2D detector;
     public float pullSpeed;
 
-
-
     void Awake()
     {
        player = GetComponentInParent<PlayerStats>();
     }
-    public void SetRadius(float r)
+    public void SetRadius(float r) // set ban kinh cho collider cua collector
     {
         if (!detector)
         {
@@ -22,7 +20,6 @@ public class PlayerCollector : MonoBehaviour
             detector.radius = r;
         }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out PickupItem p))
