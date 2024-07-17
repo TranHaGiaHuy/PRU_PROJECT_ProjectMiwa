@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df3a376183af42041bec7ff2b761a067, type: 3}
   m_Name: Axel
   m_EditorClassIdentifier: 
-  icon: {fileID: 1018210545, guid: 379c823386c4330479a08d7169479a03, type: 3}
+  icon: {fileID: 21300000, guid: f90ab4d8d90d2dd4489b97aff60568f0, type: 3}
   controller: {fileID: 22100000, guid: 5ede4d3cd9b31ad41bef679aae490506, type: 2}
   name: Axel
   startingWeapon: {fileID: 11400000, guid: 5489fca1211786c4989a2592b0ec2808, type: 2}

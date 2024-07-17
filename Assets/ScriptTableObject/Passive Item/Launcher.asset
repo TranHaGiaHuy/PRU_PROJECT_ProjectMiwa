@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf5e8a4459987944a8a001d5870dc62, type: 3}
   m_Name: Launcher
   m_EditorClassIdentifier: 
-  icon: {fileID: -2099629796, guid: 495b2cffc4850b04dbab6cb18d0fa0cf, type: 3}
+  icon: {fileID: -604025125, guid: e2731fbe6ccba5948aa7ead0cd976028, type: 3}
   maxLevel: 1
   evolutionData: []
   baseStats:

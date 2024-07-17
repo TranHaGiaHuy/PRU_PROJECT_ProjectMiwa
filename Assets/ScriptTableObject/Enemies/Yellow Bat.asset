@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38943646beac4f4a948f91de9c39ff3, type: 3}
   m_Name: Yellow Bat
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  maxHealth: 1000
+  moveSpeed: 3.07
+  maxHealth: 393.3
   damage: 100
